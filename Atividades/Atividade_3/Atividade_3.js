@@ -1,3 +1,5 @@
+console.log('Questão 3');
+
 class Animais {
     constructor(genero, classe, ordem, habitat) {
         this.genero = genero;
@@ -6,17 +8,30 @@ class Animais {
         this.habitat = habitat;
     }
 
-    locomoverSe() {
+    locomoverSe(ordem) {
+        if(ordem == 'Mamífero') {
+            console.log('Caminha.')
+        } else if(ordem == 'Peixe') {
+            console.log('Nada.')
+        } else if(ordem == 'Ave') {
+            console.log('Voa.')
+        }
     }
 
-    alimentarSe() {
-        
+    set alimentarSe(classe) {
+        if(classe == 'Carnívoro') {
+            console.log('Come carne.')
+        } else if(classe == 'Herbívoro') {
+            console.log('Come plantas.')
+        } else if(classe == 'Onívoro') {
+            console.log('Come tudo.')
+        } 
     }
 }
 
 class Mamiferos extends Animais {
     constructor(genero, classe, ordem, habitat, cetaceo) {
-        super(genero, classe, ordem, habitat);
+        super(genero, classe, ordem, habitat, locomoverSe);
         this.cetaceo = true;
     }
 }
@@ -35,6 +50,6 @@ class Aves extends Animais {
     }
 }
 
-var pardal = new Aves('Passer', Aves, 'Passeriformes', 'Árvores');
+var pardal = new Aves('Passer', 'Herbívoro', 'Ave', 'Árvores');
 
 console.log(pardal);
